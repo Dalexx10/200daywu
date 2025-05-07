@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>nuestros primeros 200💗</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: url('fondo.png') no-repeat center center fixed;
+      background-size: cover;
+      color: white;
+      text-align: center;
+      position: relative;
+    }
+
+    /* Filtro oscuro encima de la imagen */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5); /* oscurece el fondo */
+      z-index: -1;
+    }
+
+    .container {
+      background-color: rgba(0, 0, 0, 0.6);
+      padding: 20px;
+      border-radius: 20px;
+      max-width: 700px;
+      margin: 50px auto;
+    }
+
+    #letter {
+      display: none;
+      margin-top: 30px;
+      padding: 20px;
+      background-color: rgba(255, 255, 255, 0.1);
+      border: 2px solid pink;
+      border-radius: 15px;
+      font-size: 1.1em;
+      line-height: 1.6em;
+      animation: fadeIn 2s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      0% {opacity: 0; transform: translateY(20px);}
+      100% {opacity: 1; transform: translateY(0);}
+    }
+
+    input[type="date"] {
+      padding: 10px;
+      font-size: 1em;
+      border-radius: 10px;
+      border: none;
+    }
+
+    button {
+      margin-top: 10px;
+      padding: 10px 20px;
+      font-size: 1em;
+      background-color: pink;
+      color: black;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+    .result {
+      margin-top: 15px;
+      font-weight: bold;
+      font-size: 1.2em;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>200 hundred days</h1>
+    <p>El 28 de octubre inicio...</p>
+    <input type="date" id="startDate">
+    <br>
+    <button onclick="calculateDays()">Calcular</button>
+
+    <div id="result" class="result"></div>
+
+    <div id="letter">
+      <h2>Un proceso, el descubrir de una persona que cambiaria mi vida y que descubri que la queria para toda mi vida 💗💗💗💗</h2>
+      <p>
+        Todo inicio un 28 de octubre, realmente han pasado 191 días, pero snap sabe que cuanto nos amamos y ha hecho que el conteo sea mayor, porque en ningun momento ni un solo día nos hemos dejado de hablar. Es grandioso eso mi amor, te convertiste en mi persona favorita, la persona que más amo en este planeta.
+        Descubri porque la gente se casa y porque amamos, y porque el amor de mi vida eres tu, el porque te quiero para toda la vida, como amo cada cosa de ti, como eres perfecta. Como te amo demasiado. Te amo tanto, se que este ha sido un camino hermoso que quiero seguir escribiendo siempre, Te amo muchisimo, ily, i love u, ti amo💗💗💗
+        eres el amo de mi vida, te amo muchisimo.
+        <br><br>
+        Te amo, Dave.O💗
+      </p>
+    </div>
+  </div>
+
+  <script>
+    function calculateDays() {
+      const input = document.getElementById("startDate").value;
+      if (!input) {
+        alert("");
+        return;
+      }
+
+      const startDate = new Date(input);
+      const targetDate = new Date(startDate);
+      targetDate.setDate(targetDate.getDate() + 190); // fecha real
+
+      const today = new Date();
+      const result = document.getElementById("result");
+      const letter = document.getElementById("letter");
+
+      if (today >= targetDate) {
+        result.innerHTML = "";
+        letter.style.display = "block";
+      } else {
+        const diffTime = Math.abs(targetDate - today);
+        const remainingDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+        result.innerHTML = `Faltan ${remainingDays} días para nuestros 200 días 💫`;
+        letter.style.display = "none";
+      }
+    }
+  </script>
+</body>
+</html>
